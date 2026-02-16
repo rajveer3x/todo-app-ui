@@ -19,13 +19,18 @@ function App() {
 
   }
 
+  const handleDeleteItem= (todoItemName) =>{
+    const newTodoItems= todoItems.filter((item)=> item.name !== todoItemName);
+    console.log(`item deleted ${todoItemName}`)
+
+  }
 
   return (
     <center className="todo-container">
       <AppName />
       <AddTodo onNewItem= {handleNewItem}/>
       {todoItems.length === 0 && <WelcomeMessage ></WelcomeMessage>}
-      <TodoItems todoItems={todoItems} />
+      <TodoItems todoItems={todoItems} onDeleteClick={handleDeleteItem} />
     </center>
   )
 }
